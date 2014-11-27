@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns:atg="http://atg.xbox.com" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{8e114980-c1a3-4ada-ad7c-83caadf5daeb}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{2c3d4c8c-5d1a-459a-a05a-a4e4b608a44e}</UniqueIdentifier>
+      <Extensions>fx;fxh;hlsl</Extensions>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{d43cce4d-99df-474a-a8bc-b6ce2c546b78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{43b37928-4757-41ae-bc15-f79787f3d710}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DDSTextureLoader.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Planete.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CLInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
+    </CLInclude>
+    <ResourceCompile Include="Tutorial07.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+    <ClInclude Include="DDSTextureLoader.h" />
+    <ClInclude Include="Planete.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleMath.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="PerlinSphere.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Tutorial07.fx">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Tutorial07_PS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Tutorial07_VS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="seafloor.dds">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SimpleMath.inl">
+      <Filter>Include</Filter>
+    </None>
+  </ItemGroup>
+</Project>
