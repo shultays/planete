@@ -38,12 +38,14 @@ class Sphere{
 		}
 	}
 
-	static void build_int(int d, int  p1, int  p2, int  p3, std::vector<Vector3>  &out_vertex, std::vector<int> &out_index){
+
+	static void build_int(int d, int  p1, int  p2, int  p3, std::vector<Vector3>  &out_vertex, std::vector<int> &out_index, int print = 0){
 
 		if (d == 1){
 			out_index.push_back(p1);
 			out_index.push_back(p2);
 			out_index.push_back(p3);
+
 		}
 		else
 		{
@@ -86,10 +88,10 @@ class Sphere{
 
 			d--;
 
-			build_int(d, p1, p12, p13, out_vertex, out_index);
-			build_int(d, p12, p2, p23, out_vertex, out_index);
-			build_int(d, p13, p23, p3, out_vertex, out_index);
-			build_int(d, p12, p23, p13, out_vertex, out_index);
+			build_int(d, p1, p12, p13, out_vertex, out_index, print);
+			build_int(d, p12, p2, p23, out_vertex, out_index, print);
+			build_int(d, p13, p23, p3, out_vertex, out_index, print);
+			build_int(d, p12, p23, p13, out_vertex, out_index, print);
 		}
 	}
 
@@ -148,6 +150,12 @@ public:
 			vertex[i].y = min + (max - min)*(((float)rand()) / RAND_MAX);
 			vertex[i].z = min + (max - min)*(((float)rand()) / RAND_MAX);
 		}
+	}
+
+	float getHeightAt(Vector3 v)
+	{
+
+			return 0;
 	}
 };
 

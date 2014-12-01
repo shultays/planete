@@ -68,9 +68,10 @@ PS_INPUT VS( VS_INPUT input )
 float4 PS( PS_INPUT input) : SV_Target
 {
 	float4 color = float4(1, 1, 1, 1);
+	float3 l = normalize(float3(0.7, 0.7, 0));
 
-	float s = dot(input.Normal.xyz, float3(0.7, 0.7, 0));
-
+	float s = dot(input.Normal.xyz, l);
+	//s = s*0.8 + 0.2;
 	color.xyz *= s;
 
 	return color;

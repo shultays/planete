@@ -4,6 +4,7 @@
 #include <vector>
 
 void Planete::init(){
+	ps.init_static();
 
 	HRESULT hr = S_OK;
 
@@ -101,8 +102,8 @@ void Planete::init(){
 	g_World = XMMatrixIdentity();
 
 	// Initialize the view matrix
-	camera.setEye(0.0f, 3.0f, -6.0f);
-	camera.setPos(0.0f, 1.0f, 0.0f);
+	camera.setPos(0.0f, 0.0f, -4.0f);
+	camera.setEye(0.0f, 0.0f, 1.0f);
 	camera.setUp(0.0f, 1.0f, 0.0f);
 	g_View = camera.getViewMatrix();
 
@@ -153,8 +154,8 @@ void Planete::tick(float dt){
 
 
 	// Rotate cube around the origin
-	g_World = XMMatrixRotationY(dt)*XMMatrixTranslation(1.5f, 0.5f, 0.0f);
-
+	g_World = XMMatrixRotationY(dt*0.2);
+	//g_World = XMMatrixIdentity();
 	/*// Modify the color
 	g_vMeshColor.x = (sinf(dt * 1.0f) + 1.0f) * 0.5f;
 	g_vMeshColor.y = (cosf(dt * 3.0f) + 1.0f) * 0.5f;

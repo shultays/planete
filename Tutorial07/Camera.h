@@ -1,20 +1,29 @@
+#pragma once
+
+#ifndef CAMERA_H
+#define CAMERA_H
+
 
 #include <directxmath.h>
+#include "SimpleMath.h"
+
+using namespace DirectX;
+using namespace SimpleMath;
 
 class Camera{
 public:
 
-	DirectX::XMVECTOR eye;
-	DirectX::XMVECTOR pos;
-	DirectX::XMVECTOR up;
+	Vector3 eye;
+	Vector3 pos;
+	Vector3 up;
 
-	void setEye(DirectX::XMVECTOR eye){
+	void setEye(Vector3 eye){
 		this->eye = eye;
 	}
-	void setPos(DirectX::XMVECTOR pos){
+	void setPos(Vector3 pos){
 		this->pos = pos;
 	}
-	void setUp(DirectX::XMVECTOR up){
+	void setUp(Vector3 up){
 		this->up = up;
 	}
 	void setEye(float x, float y, float z){
@@ -29,6 +38,8 @@ public:
 
 
 	DirectX::XMMATRIX getViewMatrix(){
-		return DirectX::XMMatrixLookAtLH(eye, pos, up);
+		return DirectX::XMMatrixLookAtLH(pos, pos+eye, up);
 	}
 };
+
+#endif
