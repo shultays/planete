@@ -22,6 +22,9 @@
     <ClCompile Include="Planete.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="DebugDraw.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -52,6 +55,19 @@
     <ClInclude Include="PerlinSphere.h">
       <Filter>Include</Filter>
     </ClInclude>
+    <ClInclude Include="DebugDraw.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="seafloor.dds">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SimpleMath.inl">
+      <Filter>Include</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Tutorial07.fx">
@@ -63,15 +79,14 @@
     <FxCompile Include="Tutorial07_VS.hlsl">
       <Filter>Shaders</Filter>
     </FxCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="seafloor.dds">
-      <Filter>Resource Files</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SimpleMath.inl">
-      <Filter>Include</Filter>
-    </None>
+    <FxCompile Include="DebugDraw.fx">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="DebugDraw_PS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="DebugDraw_VS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

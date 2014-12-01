@@ -84,7 +84,7 @@ public:
 		}*/
 
 		
-		for (int i = 0; i < 50000000; i++){
+		for (int i = 0; i < 0; i++){
 			Vector3 v1 = Vector3(getRandom(-1, 1), getRandom(-1, 1), getRandom(-1, 1));
 			v1.Normalize();
 

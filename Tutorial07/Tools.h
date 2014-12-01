@@ -13,6 +13,9 @@
 #define PI3_2 4.71238898038f
 #define PI2 6.28318530718f
 
+using namespace DirectX;
+using namespace SimpleMath;
+
 class Tools{
 public:
 

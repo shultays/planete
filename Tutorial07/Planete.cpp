@@ -2,6 +2,7 @@
 #include "Tools.h"
 #include "Sphere.h"
 #include <vector>
+#include "DebugDraw.h"
 
 void Planete::init(){
 	ps.init_static();
@@ -121,6 +122,8 @@ void Planete::init(){
 	g_vMeshColor = XMFLOAT4(0.7f, 0.7f, 0.7f, 1.0f);
 
 	ps.init();
+
+	dd.init();
 	
 }
 
