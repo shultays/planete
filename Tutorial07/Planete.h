@@ -64,7 +64,6 @@ class Planete {
 
 	Camera camera;
 	Shader shader;
-	PerlinSphere ps;
 
 public:
 	void init();

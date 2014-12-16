@@ -81,9 +81,7 @@ public:
 		float sv = sin(vertical);
 		float cv = cos(vertical);
 
-
 		return Vector3(r*sv*sh, r*cv, r*sv*ch);
-
 	}
 
 	static inline Vector3 SphericalToXyz(Vector2 v){
@@ -95,8 +93,6 @@ public:
 
 
 	static inline bool pointInTriangleSpherical(Vector3 &A, Vector3 &B, Vector3 &C, Vector3& P){
-
-
 		Vector3 v0 = C - A;
 		Vector3 v1 = B - A;
 
@@ -145,9 +141,7 @@ public:
 	}
 
 
-	static inline bool pointInTriangle(Vector2 &A, Vector2 &B, Vector2 &C, Vector2 &P){
-
-
+	static inline bool pointInTriangle(Vector2 &A, Vector2 &B, Vector2 &C, Vector2 &P, float &u, float &v){
 		Vector3 v0 = C - A;
 		Vector3 v1 = B - A;
 		Vector3 v2 = P - A;
@@ -159,14 +153,29 @@ public:
 		float dot12 = dot(v1, v2);
 
 		float invDenom = 1 / (dot00 * dot11 - dot01 * dot01);
-		float u = (dot11 * dot02 - dot01 * dot12) * invDenom;
-		float v = (dot00 * dot12 - dot01 * dot02) * invDenom;
+		u = (dot11 * dot02 - dot01 * dot12) * invDenom;
+		v = (dot00 * dot12 - dot01 * dot02) * invDenom;
 
 		return (u >= -0.000001f) && (v >= -0.000001f) && (u + v < 1.0f + 0.000001f);
+	}
+	static inline bool pointInTriangle(Vector2 &A, Vector2 &B, Vector2 &C, Vector2 &P){
+
+		float u, v;
+		return pointInTriangle(A, B, C, P, u, v);
 	}
 
 	static inline float dot(Vector3 &v, Vector3 v2){
 		return v.Dot(v2);
+	}
+
+	static float getRandom(){
+		return ((float)rand()) / RAND_MAX;
+	}
+
+	static float getRandom(float a, float b){
+		float l = b - a;
+		float r = getRandom();
+		return a + l*r;
 	}
 };
 

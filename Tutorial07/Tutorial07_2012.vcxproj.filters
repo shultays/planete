@@ -25,6 +25,12 @@
     <ClCompile Include="DebugDraw.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="PerlinSphereLevel.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="PerlinSphere.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -56,6 +62,9 @@
       <Filter>Include</Filter>
     </ClInclude>
     <ClInclude Include="DebugDraw.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="PerlinSphereLevel.h">
       <Filter>Include</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,10 +3,9 @@
 #include "Sphere.h"
 #include <vector>
 #include "DebugDraw.h"
+#include "PerlinSphereLevel.h"
 
 void Planete::init(){
-	ps.init_static();
-
 	HRESULT hr = S_OK;
 
 	shader.buildShader(L"Tutorial07.fx");
@@ -121,8 +120,14 @@ void Planete::init(){
 
 	g_vMeshColor = XMFLOAT4(0.7f, 0.7f, 0.7f, 1.0f);
 
-	ps.init();
+	PerlinSphereLevel::init_static();
 
+	PerlinSphere ps;
+	for(int i=0; i<0; i++){
+		Vector3 v = Vector3(Tools::getRandom(-1, 1),Tools::getRandom(-1, 1),Tools::getRandom(-1, 1));
+		v.Normalize();
+		ps.getHeight(v);
+	}
 	dd.init();
 	
 }
@@ -157,7 +162,7 @@ void Planete::tick(float dt){
 
 
 	// Rotate cube around the origin
-	g_World = XMMatrixRotationY(dt*0.2);
+	g_World = XMMatrixRotationY(dt*0.2f);
 	//g_World = XMMatrixIdentity();
 	/*// Modify the color
 	g_vMeshColor.x = (sinf(dt * 1.0f) + 1.0f) * 0.5f;
