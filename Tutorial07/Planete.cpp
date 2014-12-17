@@ -123,7 +123,7 @@ void Planete::init(){
 	PerlinSphereLevel::init_static();
 
 	PerlinSphere ps;
-	for(int i=0; i<0; i++){
+	for(int i=0; i<100000; i++){
 		Vector3 v = Vector3(Tools::getRandom(-1, 1),Tools::getRandom(-1, 1),Tools::getRandom(-1, 1));
 		v.Normalize();
 		ps.getHeight(v);

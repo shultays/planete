@@ -2,16 +2,19 @@
 
 Quaternion PerlinSphereLevel::qs[2][2][2];
 
-PerlinSphereLevel::PerlinSphereLevel(int level)
+PerlinSphereLevel::PerlinSphereLevel(int level, float minHeight, float maxHeight, unsigned int seed)
 {
 	this->level = level;
-
+	this->minHeight = minHeight;
+	this->maxHeight = maxHeight;
 	this->rotateQuaterninon = 
 		Quaternion::CreateFromAxisAngle(Vector3(1, 0, 0), Tools::getRandom(-PI,PI)) * 
 		Quaternion::CreateFromAxisAngle(Vector3(0, 1, 0), Tools::getRandom(-PI,PI)) * 
 		Quaternion::CreateFromAxisAngle(Vector3(0, 0, 1), Tools::getRandom(-PI,PI));
 
 	rotateQuaterninon.Inverse(rotateQuaterninonInverse);
+
+	r.setSeed(seed);
 }
 
 float PerlinSphereLevel::getHeight(Vector3 &orig_p){
@@ -62,7 +65,17 @@ float PerlinSphereLevel::getHeight(Vector3 &orig_p){
 		p2.vertical_coordinate = total_v - p2.vertical_coordinate;
 	}
 
-	return 0.0f;
+	float r0 = r.randomFloat((level+1)*4*p0.vertical_coordinate + p0.horizontal_coordinate);
+	float r1 = r.randomFloat((level+1)*4*p0.vertical_coordinate + p1.horizontal_coordinate);
+	float r2 = r.randomFloat((level+1)*4*p0.vertical_coordinate + p2.horizontal_coordinate);
+
+	r0 = r0*(maxHeight-minHeight) + minHeight;
+	r1 = r1*(maxHeight-minHeight) + minHeight;
+	r2 = r2*(maxHeight-minHeight) + minHeight;
+
+	float m_uv = 1.0f - u - v;
+
+	return m_uv*r0 + u*r1 + v*r2;
 }
 
 
@@ -94,6 +107,11 @@ void PerlinSphereLevel::findTriangleOfVector(Vector3 &p, VertexCoordinate &outpu
 	float bottom_h_l = PI_2 / (bottom_p_count - 1);
 
 	int bottom_h_index = (int)(horizontal_ang / bottom_h_l);
+
+	if(index_v == 0)
+	{
+		sp.x *= sp.y/v_l;
+	}
 
 	Vector2 p0 = Vector2(bottom_h_index*bottom_h_l, bottom_v);
 	Vector2 p1 = Vector2(bottom_h_index*top_h_l, top_v);
@@ -147,18 +165,6 @@ void PerlinSphereLevel::findTriangleOfVector(Vector3 &p, VertexCoordinate &outpu
 				return;
 			}
 		}
-		else
-		{
-
-			printf("hmm\n");
-		}
-		
-
-
-		printf("err\n");
-	}else{
-		//printf("top\n");
-
-		return;
 	}
+	printf("err\n");
 }

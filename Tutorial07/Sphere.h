@@ -61,7 +61,7 @@ class Sphere{
 			int p13 = -1;
 			int p23 = -1;
 
-			for (int i = 0; i < out_vertex.size(); i++){
+			for (unsigned int i = 0; i < out_vertex.size(); i++){
 				if (Vector3::DistanceSquared(out_vertex[i], vp12) <= FLT_EPSILON){
 					p12 = i;
 				}
@@ -145,7 +145,7 @@ public:
 	}
 
 	void randomize(float min, float max){
-		for (int i = 0; i < vertex.size(); i++){
+		for (unsigned int i = 0; i < vertex.size(); i++){
 			vertex[i].x = min + (max - min)*(((float)rand()) / RAND_MAX);
 			vertex[i].y = min + (max - min)*(((float)rand()) / RAND_MAX);
 			vertex[i].z = min + (max - min)*(((float)rand()) / RAND_MAX);
@@ -155,7 +155,7 @@ public:
 	float getHeightAt(Vector3 v)
 	{
 
-			return 0;
+			return v.Length();
 	}
 };
 

@@ -10,6 +10,7 @@
 #include "SimpleMath.h"
 
 #include "Tools.h"
+#include "LCGRandom.h"
 
 class PerlinSphereLevel{
 public:
@@ -41,8 +42,9 @@ public:
 
 	Quaternion rotateQuaterninon, rotateQuaterninonInverse;
 	int level;
-
-	PerlinSphereLevel(int level);
+	float minHeight, maxHeight;
+	LCGRandom r;
+	PerlinSphereLevel(int level, float minHeight, float maxHeigh, unsigned int seed);
 	float getHeight(Vector3 &p);
 
 	void findTriangleOfVector(Vector3 &p, VertexCoordinate &p0, VertexCoordinate &p1, VertexCoordinate &p2, float &u, float &v);

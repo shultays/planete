@@ -67,6 +67,9 @@
     <ClInclude Include="PerlinSphereLevel.h">
       <Filter>Include</Filter>
     </ClInclude>
+    <ClInclude Include="LCGRandom.h">
+      <Filter>Include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="seafloor.dds">
