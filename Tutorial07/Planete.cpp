@@ -10,19 +10,20 @@ void Planete::init(){
 
 	shader.buildShader(L"Tutorial07.fx");
 
+	PerlinSphereLevel::init_static();
+
+	PerlinSphere ps;
 	std::vector<Vector3> vertice_vector;
-	Sphere::build(4, vertice_vector);
-
-
-
+	Sphere::build(7, vertice_vector);
+	
 	// Create vertex buffer
 	s = vertice_vector.size();
 	SimpleVertex* vertices = new SimpleVertex[s];
 
 	for (int i = 0; i < s; i += 3){
-		vertices[i].Pos = vertice_vector[i];
-		vertices[i+1].Pos = vertice_vector[i+1];
-		vertices[i+2].Pos = vertice_vector[i+2];
+		vertices[i].Pos = vertice_vector[i] * ps.getHeight(vertice_vector[i]);
+		vertices[i + 1].Pos = vertice_vector[i + 1] * ps.getHeight(vertice_vector[i+1]);
+		vertices[i + 2].Pos = vertice_vector[i + 2] * ps.getHeight(vertice_vector[i+2]);
 
 
 		Vector3 mid = vertices[i].Pos + vertices[i + 1].Pos + vertices[i + 2].Pos;
@@ -120,9 +121,6 @@ void Planete::init(){
 
 	g_vMeshColor = XMFLOAT4(0.7f, 0.7f, 0.7f, 1.0f);
 
-	PerlinSphereLevel::init_static();
-
-	PerlinSphere ps;
 	for(int i=0; i<100000; i++){
 		Vector3 v = Vector3(Tools::getRandom(-1, 1),Tools::getRandom(-1, 1),Tools::getRandom(-1, 1));
 		v.Normalize();
@@ -162,8 +160,8 @@ void Planete::tick(float dt){
 
 
 	// Rotate cube around the origin
-	g_World = XMMatrixRotationY(dt*0.2f);
-	//g_World = XMMatrixIdentity();
+	//g_World = XMMatrixRotationY(dt*0.2f);
+	g_World = XMMatrixIdentity();
 	/*// Modify the color
 	g_vMeshColor.x = (sinf(dt * 1.0f) + 1.0f) * 0.5f;
 	g_vMeshColor.y = (cosf(dt * 3.0f) + 1.0f) * 0.5f;

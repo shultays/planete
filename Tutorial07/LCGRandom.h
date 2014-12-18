@@ -23,8 +23,23 @@ public:
 	}
 
 	float randomFloat(int state){
-		return ((float)random(state))/MAX_LCG_RAND;
+		unsigned int a = random(state);
+		return ((float)a)/MAX_LCG_RAND;
 
 	}
 
+	uint64_t
+		ranhash(uint64_t v) {
+			v *= 3935559000370003845LL;
+			v += 2691343689449507681LL;
+			v ^= v >> 21; v ^= v << 37; v ^= v >> 4;
+			v *= 4768777513237032717LL;
+			v ^= v << 20; v ^= v >> 41; v ^= v << 5;
+			return v;
+		}
+
+	double
+		ranhashdoub(uint64_t v) {
+			return 5.42101086242752217E-20 * ranhash(v);
+		}
 };
